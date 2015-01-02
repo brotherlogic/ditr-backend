@@ -21,6 +21,7 @@ public class MongoBridge implements LocalInformation
       try
       {
          String conn = System.getenv("MONGOLAB_URI");
+         conn = "mongodb://heroku_app32935730:3kpmepg6k2fvtckh1pm5bj2uno@ds029811.mongolab.com:29811/heroku_app32935730";
          if (conn == null)
             client = new MongoClient();
          else
@@ -56,6 +57,7 @@ public class MongoBridge implements LocalInformation
       query.append("token", token);
 
       // Add the user collection if necessary
+      connect();
       if (!db.collectionExists("user"))
          db.createCollection("user", new BasicDBObject());
 
